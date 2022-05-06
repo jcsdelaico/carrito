@@ -1,26 +1,45 @@
 <?php
 
+    if ( isset($_POST["btn_comprar"]) ) compra($_POST);
+
+    function compra($post) {
+        // saca las variables del vector
+        extract($post);
+        require("res/configuracion.inc");
+
+        $fecha_registro = date("Y-m-d H:i:s");
+
+        // insertar un registro en la tabla con la compra
+        $sql = "INSERT INTO compras VALUES (null, '$tb_email', $tb_cantidad, $tb_total, '$fecha_registro')";
+        if (mysqli_query($connection, $sql)) {
+            // redireccionar a una nueva página
+            header("Location: index.php?compraOk ");
+        } else {
+            echo "hubo un error en la compra";
+            // redireccionar a una nueva página
+            header("Location: index.php?error ");
+        }
+    }
+
     function traer_productos() {
-        # variables
-        $variable_modelo_int = 0;
-        $variable_modelo_string = "juan";
+        require("res/configuracion.inc");
+        $sql = "SELECT * FROM productos";
+        // paso las variables:
+        // connection => que se crea en configuracion.inc
+        // sql => con la consulta que quiero hacer
+        $res = mysqli_query($connection, $sql);
 
-        # declarar vector
         $productos = array();
-
-        for ($i = 1; $i < 12; $i++) {
+        while ($f = mysqli_fetch_array($res) ) {
             $productos[] = array(
-                "nombre_es"        => "producto $i",
-                "nombre_en"        => "product $i",
-                "nombre_pt"        => "produto $i",
-                "valor"            => rand(500, 4500),
-                "descripcion_es"   => "descripción producto $i",
-                "descripcion_en"   => "description product $i",
-                "descripcion_pt"   => "des prod $i",
-                "cantidad"          => 0
+                "nombre"            => $f["nombre"],
+                "valor"             => $f["valor"],
+                "descripcion"       => $f["descripcion"],
+                "cantidad"          => 0,
+                "fecha_registro"    => $f["fecha_registro"]
             );
         }
-        # devolver los productos 
+        // mandar el array al html
         return $productos;
     }
 

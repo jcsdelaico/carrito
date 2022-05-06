@@ -4,3 +4,13 @@
 # programar botones sumar y restar
 # calcular total y cantidad
 # mostrar total y cantidad
+
+# mysql
+# traer datos
+    => SELECT * FROM tabla
+# insertar datos
+    => INSERT INTO tabla VALUES (id, email, cantidad, valor, fecha_registro)
+# actualziar datos
+    => UPDATE tabla SET nombre = "juan" WHERE id = 1;
+# borrar datos
+    => DELETE FROM tabla WHERE id = 1;

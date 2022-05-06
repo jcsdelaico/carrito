@@ -97,9 +97,9 @@
                                     <img src="" class="card-img-top" alt="">
                                     <div class="card-body">
                                         <!-- echo es parar mostrar en pantalla variables en php -->
-                                        <h5 class="card-title"><?= $p["nombre_$idioma"]; ?></h5>
+                                        <h5 class="card-title"><?= $p["nombre"]; ?></h5>
                                         <h6 class="card-subtitle mb-2 text-muted ">$<?= $p["valor"]; ?></h6>
-                                        <p class="card-text"><?= $p["descripcion_$idioma"]; ?></p>
+                                        <p class="card-text"><?= $p["descripcion"]; ?></p>
                                     </div>
                                     <div class="card-footer">
                                         <button data-id_boton="<?= $k; ?>" class="btn btn-sm btn-primary btn_restar">-</button>
@@ -121,8 +121,14 @@
                 <div class="col-2">
                     <div class="row justify-content-center">
                         <div class="col text-center mt-5 div-totales">
-                            <h5>Cantidad: <span class="cantidad-productos"></span></h5>
-                            <h5>Total: <span class="total-pagar"></span></h5>
+                            <form action="funciones.php" method="post">
+                                <h5>Cantidad: <span class="cantidad-productos"></span></h5>
+                                <h5>Total: <span class="total-pagar"></span></h5>
+                                <input type="email" required name="tb_email" placeholder="Ingrese su email..." />
+                                <input type="hidden" id="tbCantidad" name="tb_cantidad" value="" />
+                                <input type="hidden" id="tbTotal" name="tb_total" value="" />
+                                <input type="submit" class="btn btn-success" name="btn_comprar" value="Comprar" />
+                            </form>
                         </div>
                     </div>
                 </div>
