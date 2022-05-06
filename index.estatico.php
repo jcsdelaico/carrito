@@ -6,8 +6,8 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="res/css/bootstrap.min.css">
-        <link rel="stylesheet" href="res/css/estilos.css">
+        <link rel="stylesheet" href="/res/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/res/css/estilos.css">
     </head>
     <body>
 
@@ -52,9 +52,9 @@
                         <p class="card-text">Esta es la descripción del producto 1</p>
                       </div>
                       <div class="card-footer">
-                          <button class="btn btn-sm btn-primary">-</button>
-                          <span>0</span>
-                          <button class="btn btn-sm btn-primary">+</button>
+                          <button class="btn btn-sm btn-primary btn_restar">-</button>
+                          <span id="cantidad_producto1">0</span>
+                          <button class="btn btn-sm btn-primary btn_sumar">+</button>
                       </div>
                     </div>
                     <!-- /producto -->
@@ -71,7 +71,7 @@
                       <div class="card-footer">
                           <button class="btn btn-sm btn-primary">-</button>
                           <span>0</span>
-                          <button class="btn btn-sm btn-primary">+</button>
+                          <button class="btn btn-sm btn-primary btn_sumar">+</button>
                       </div>
                     </div>
                     <!-- /producto -->
@@ -153,8 +153,9 @@
 
 
 
-        <script src="res/js/jquery-3.4.1.min.js"></script>
-        <script src="res/js/popper.min.js"></script>
-        <script src="res/js/bootstrap.min.js"></script>
+        <script src="/res/js/jquery-3.4.1.min.js"></script>
+        <script src="/res/js/popper.min.js"></script>
+        <script src="/res/js/bootstrap.min.js"></script>
+        <script src="/res/js/funciones.js"></script>
     </body>
 </html>
