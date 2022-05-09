@@ -1,9 +1,7 @@
+a{text-decoration: none;}
 .div-totales{display: none;}
 
-.icono-reaccion{
-    text-decoration: none;
-}
 .icono-reaccion:hover{
     cursor: pointer;
-    transform: scale(1.2);
+    transform: scale(1.5);
 }

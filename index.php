@@ -138,8 +138,9 @@
                                         </div>
                                         <div class="card-footer bg-light text-start">
                                             <p class="border-bottom">Reacciones</p>
-                                            <p class="py-0 my-0"><a class="my-0 display-block icono-reaccion"><i class="fa fa-smile-o me-2"></i>Me gusta</a></p>
-                                            <p class="py-0 my-0"><a class="my-0 display-block icono-reaccion"><i class="fa fa-smile-o me-2"></i>Me interesa</a></p>
+                                            <p class="py-0 my-0"><a class="my-0 text-success"><i class="fa fa-thumbs-up me-2 icono-reaccion"></i>Me gusta</a></p>
+                                            <p class="py-0 my-0"><a class="my-0 text-warning"><i class="fa fa-exclamation me-2 icono-reaccion"></i>Me interesa</a></p>
+                                            <p class="py-0 my-0"><a class="my-0 text-danger"><i class="fa fa-thumbs-down me-2 icono-reaccion"></i>No me gusta</a></p>
                                         </div>
                                     </div>
                                     <!-- /producto -->
