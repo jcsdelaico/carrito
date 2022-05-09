@@ -54,10 +54,12 @@ btn_restar.forEach(b => {
 function calcular_total() {
     let cantidad = 0;
     let total = 0;
+    $(".div-mostrar-productos").html("");
     productos.forEach(p => {
         //sumo la cantidad de cada producto y la guardo en la var cantidad
         cantidad += p.cantidad; 
         if ( p.cantidad <= 0 ) return;
+        mostrarSubtotales(p.nombre, p.cantidad, p.valor);
 
         total += p.valor * p.cantidad;
     })
@@ -66,11 +68,17 @@ function calcular_total() {
     mostrarTotales(total);
 
     // lleno los span
-    document.querySelector(".cantidad-productos").innerText = cantidad;
-    document.querySelector(".total-pagar").innerText = total;
+    document.querySelector(".total-pagar").innerText = "$" + total;
     // lleno los input hidden
     document.querySelector("#tbCantidad").value = cantidad;
     document.querySelector("#tbTotal").value = total;
+}
+
+function mostrarSubtotales(nombre, cantidad, valor) {
+    $(".div-mostrar-productos").append(`
+        <p class='my-0 py-0'>
+            ${cantidad + "x " + nombre + " $" + (cantidad * valor)}
+        </p>`);
 }
 
 function mostrarTotales(total) {

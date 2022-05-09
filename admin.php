@@ -1,0 +1,6 @@
+<?php
+
+    // ejercicio?
+    // listar productos
+
+?>

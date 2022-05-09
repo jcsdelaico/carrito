@@ -6,66 +6,88 @@
 
     // comentarios php
     # comprobar si existe el idioma forma larga
-    // if ( isset($_GET["idioma"]) ) echo "existe";
-    // if ( !isset($_GET["idioma"]) ) echo "no existe";
+    // if ( isset($_get["idioma"]) ) echo "existe";
+    // if ( !isset($_get["idioma"]) ) echo "no existe";
 
     # comprobar si existe el idioma forma corta
-    #echo isset($_GET["idioma"]) ? "existe" : "no existe";
+    #echo isset($_get["idioma"]) ? "existe" : "no existe";
 
     # bajar variable de la url y setearla a idioma
-    $idioma = isset($_GET["idioma"]) ? $_GET["idioma"] : "es";
+    $idioma = isset($_get["idioma"]) ? $_get["idioma"] : "es";
     # por si el idioma no es ninguno de los 3 establecidos
     if ( $idioma != "en" && $idioma != "pt" ) $idioma = "es";
 
     # setear valor en variable
-    $titulo_carrito = "Carrito";
-    $titulo_catalogo = "Catálogo";
+    $titulo_carrito = "carrito";
+    $titulo_catalogo = "catálogo";
 
     # condicionales de idioma
     # inglés
     if ( $idioma == "en" ) {
-        $titulo_carrito = "Cart";
-        $titulo_catalogo = "Catalogue";
+        $titulo_carrito = "cart";
+        $titulo_catalogo = "catalogue";
     }
     # portugués
     if ( $idioma == "pt" ) {
-        $titulo_carrito = "Carritou";
-        $titulo_catalogo = "Catalog";
+        $titulo_carrito = "carritou";
+        $titulo_catalogo = "catalog";
     }
 
 ?>
-<!DOCTYPE html>
+<!doctype html>
 <html>
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title><?= $titulo_carrito; ?></title>
-        <meta name="description" content="Carrito de compras">
+        <meta name="description" content="carrito de compras">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/res/css/bootstrap.min.css">
         <link rel="stylesheet" href="/res/css/estilos.css">
     </head>
     <body>
 
+        <?php
+            if ( isset($_get["compraok"]) ) {
+                ?>
+                    <div class="bg-success py-5">
+                        <h2>compra ok</h2>
+                        contáctanos al whatsapp para gestionar tu envio.
+                    </div>
+                <?php
+                return;
+            } 
+            if ( isset($_get["error"]) ) {
+                ?>
+                    <div class="bg-danger py-5">
+                        <h2>compra error</h2>
+                        contactá a nuestro administrador para ver que falló
+                    </div>
+                <?php
+                return;
+            }
+        ?>
+
+
         <!-- navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
                     <?= $titulo_carrito; ?> <br />
-                    Estás navegando la página en: <b><?= $idioma; ?></b>
+                    estás navegando la página en: <b><?= $idioma; ?></b>
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarID"
-                    aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarid"
+                    aria-controls="navbarid" aria-expanded="false" aria-label="toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarID">
+                <div class="collapse navbar-collapse" id="navbarid">
                     <div class="navbar-nav">
-                        <a class="nav-link" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" aria-current="page" href="#">home</a>
                     </div>
                     <div class="navbar-nav">
                         <a class="nav-link <?= $idioma == "es" ? "text-danger" : "text-warning"; ?>" aria-current="page" href="#">
-                            <?= $idioma == "en" ? "Contact" : ($idioma == "pt" ? "Conctacto portu" : "Contacto") ?>
+                            <?= $idioma == "en" ? "contact" : ($idioma == "pt" ? "conctacto portu" : "contacto") ?>
                         </a>
                     </div>
                 </div>
@@ -96,6 +118,13 @@
                                     <div class="card">
                                     <img src="" class="card-img-top" alt="">
                                     <div class="card-body">
+                                        <?php
+                                        if ( $p["caro"] == "caro" ) {
+                                            ?>
+                                            <div class="bg-danger">Producto caro</div>
+                                            <?php
+                                        }
+                                        ?>
                                         <!-- echo es parar mostrar en pantalla variables en php -->
                                         <h5 class="card-title"><?= $p["nombre"]; ?></h5>
                                         <h6 class="card-subtitle mb-2 text-muted ">$<?= $p["valor"]; ?></h6>
@@ -122,12 +151,12 @@
                     <div class="row justify-content-center">
                         <div class="col text-center mt-5 div-totales">
                             <form action="funciones.php" method="post">
-                                <h5>Cantidad: <span class="cantidad-productos"></span></h5>
-                                <h5>Total: <span class="total-pagar"></span></h5>
-                                <input type="email" required name="tb_email" placeholder="Ingrese su email..." />
-                                <input type="hidden" id="tbCantidad" name="tb_cantidad" value="" />
-                                <input type="hidden" id="tbTotal" name="tb_total" value="" />
-                                <input type="submit" class="btn btn-success" name="btn_comprar" value="Comprar" />
+                                <div class="div-mostrar-productos"></div>
+                                <h5>total: <span class="total-pagar"></span></h5>
+                                <input type="email" required name="tb_email" placeholder="ingrese su email..." />
+                                <input type="hidden" id="tbcantidad" name="tb_cantidad" value="" />
+                                <input type="hidden" id="tbtotal" name="tb_total" value="" />
+                                <input type="submit" class="btn btn-success" name="btn_comprar" value="comprar" />
                             </form>
                         </div>
                     </div>
@@ -141,13 +170,13 @@
         <!-- footer -->
         <div class="container-fluid bg-light py-3 mt-5">
             <div class="row justify-content-center">
-                <div class="col-10 col-lg-4 text-center">Instagram</div>
-                <div class="col-10 col-lg-4 text-center">Facebook</div>
-                <div class="col-10 col-lg-4 text-center">Linkedin</div>
+                <div class="col-10 col-lg-4 text-center">instagram</div>
+                <div class="col-10 col-lg-4 text-center">facebook</div>
+                <div class="col-10 col-lg-4 text-center">linkedin</div>
             </div>
             <div class="row justify-content-center">
                 <div class="col text-center text-muted">
-                    Copyright todos los derechos reservados. 2022
+                    copyright todos los derechos reservados. 2022
                 </div>
             </div>
         </div>
