@@ -42,6 +42,7 @@
         <title><?= $titulo_carrito; ?></title>
         <meta name="description" content="carrito de compras">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="/res/css/bootstrap.min.css">
         <link rel="stylesheet" href="/res/css/estilos.css">
     </head>
@@ -116,25 +117,30 @@
                                 <div class="col-10 col-lg-3 text-center my-2">
                                     <!-- producto -->
                                     <div class="card">
-                                    <img src="" class="card-img-top" alt="">
-                                    <div class="card-body">
-                                        <?php
-                                        if ( $p["caro"] == "caro" ) {
-                                            ?>
-                                            <div class="bg-danger">Producto caro</div>
+                                        <img src="" class="card-img-top" alt="">
+                                        <div class="card-body">
                                             <?php
-                                        }
-                                        ?>
-                                        <!-- echo es parar mostrar en pantalla variables en php -->
-                                        <h5 class="card-title"><?= $p["nombre"]; ?></h5>
-                                        <h6 class="card-subtitle mb-2 text-muted ">$<?= $p["valor"]; ?></h6>
-                                        <p class="card-text"><?= $p["descripcion"]; ?></p>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button data-id_boton="<?= $k; ?>" class="btn btn-sm btn-primary btn_restar">-</button>
-                                        <span id="cantidad_<?= $k; ?>">0</span>
-                                        <button data-id_boton="<?= $k; ?>" class="btn btn-sm btn-primary btn_sumar">+</button>
-                                    </div>
+                                            if ( $p["caro"] == "caro" ) {
+                                                ?>
+                                                <div class="bg-danger">Producto caro</div>
+                                                <?php
+                                            }
+                                            ?>
+                                            <!-- echo es parar mostrar en pantalla variables en php -->
+                                            <h5 class="card-title"><?= $p["nombre"]; ?></h5>
+                                            <h6 class="card-subtitle mb-2 text-muted ">$<?= $p["valor"]; ?></h6>
+                                            <p class="card-text"><?= $p["descripcion"]; ?></p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button data-id_boton="<?= $k; ?>" class="btn btn-sm btn-primary btn_restar">-</button>
+                                            <span id="cantidad_<?= $k; ?>">0</span>
+                                            <button data-id_boton="<?= $k; ?>" class="btn btn-sm btn-primary btn_sumar">+</button>
+                                        </div>
+                                        <div class="card-footer bg-light text-start">
+                                            <p class="border-bottom">Reacciones</p>
+                                            <p class="py-0 my-0"><a class="my-0 display-block icono-reaccion"><i class="fa fa-smile-o me-2"></i>Me gusta</a></p>
+                                            <p class="py-0 my-0"><a class="my-0 display-block icono-reaccion"><i class="fa fa-smile-o me-2"></i>Me interesa</a></p>
+                                        </div>
                                     </div>
                                     <!-- /producto -->
                                 </div>
